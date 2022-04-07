@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nba_team/screen/bloc/bloc_home.dart';
 import 'package:nba_team/screen/model/list_team_response.dart';
 import 'package:nba_team/screen/widget/item_list_team.dart';
-import 'package:nba_team/screen/widget/widget_circle_backgound.dart';
+import 'package:nba_team/screen/widget/widget_background.dart';
+import 'package:nba_team/screen/widget/widget_background_second.dart';
 import 'package:nba_team/style/app_theme_mode.dart';
 
 class ScreenHome extends StatefulWidget {
@@ -41,7 +41,8 @@ class _ScreenHomeState extends State<ScreenHome> {
       ),
       child: Stack(
         children: [
-          const WidgetCircleBackgound(),
+          const WidgetBackground(),
+          const WidgetBackgroundSecond(),
           StreamBuilder(
             stream: blocHome.listTeamNba,
             builder: (context, AsyncSnapshot<ListTeamResponse> snapshot) {

@@ -1,6 +1,6 @@
 
 
-import 'package:nba_team/repository/Repository.dart';
+import 'package:nba_team/repository/repository.dart';
 import 'package:nba_team/screen/model/list_team_response.dart';
 import 'package:rxdart/rxdart.dart';
 

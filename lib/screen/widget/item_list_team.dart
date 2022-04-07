@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nba_team/screen/model/nba_team.dart';
+import 'package:nba_team/screen/widget/text_view.dart';
 import 'package:nba_team/style/app_theme_mode.dart';
 
 class ItemListTeam extends StatelessWidget {
@@ -11,22 +11,29 @@ class ItemListTeam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-      decoration: const BoxDecoration(
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      decoration: BoxDecoration(
         color: AppThemeMode.containerBackground,
-        borderRadius: BorderRadius.all(Radius.circular(25))
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
+        boxShadow: <BoxShadow>[BoxShadow(
+            color: Colors.black12,
+            offset: Offset.fromDirection(1.0,1.0),
+            blurRadius: 1.0)
+        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('${nbaTeam?.full_name}',
-            style: const TextStyle(color: AppThemeMode.secondaryColor, fontSize: 18),),
-          const Divider(thickness: 15, endIndent: 15, height: 0.1,),
-          Text('${nbaTeam?.name}'),
-          Text('${nbaTeam?.full_name}'),
-          Text('${nbaTeam?.full_name}'),
+          TextView(isTitle: true, title: '${nbaTeam?.full_name}',),
+          const SizedBox(height: 4,),
+          const Divider(height: 4, color: AppThemeMode.secondaryColor,),
+          const SizedBox(height: 8,),
+          TextView(title: 'Name', description: nbaTeam?.name,),
+          TextView(title: 'division', description: nbaTeam?.division,),
+          TextView(title: 'City', description: nbaTeam?.city,),
         ],
       ),
     );
